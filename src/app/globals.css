@@ -1,0 +1,101 @@
+/* Import Bootstrap CSS */
+@import 'bootstrap/dist/css/bootstrap.min.css';
+
+:root {
+  --swiggy-orange: #fc8019;
+  --swiggy-light-orange: #ffaa5b;
+  --swiggy-dark-gray: #3d4152;
+  --swiggy-light-gray: #93959f;
+  --swiggy-bg-light: #f9f9f9;
+}
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+html,
+body {
+  max-width: 100vw;
+  overflow-x: hidden;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen,
+    Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+/* Swiggy specific styles */
+.swiggy-orange {
+  color: var(--swiggy-orange);
+}
+
+.swiggy-bg-orange {
+  background-color: var(--swiggy-orange);
+}
+
+.swiggy-btn-orange {
+  background-color: var(--swiggy-orange);
+  color: white;
+  border: none;
+  transition: background-color 0.3s ease;
+}
+
+.swiggy-btn-orange:hover {
+  background-color: var(--swiggy-light-orange);
+  color: white;
+}
+
+/* Responsive utilities */
+.food-category-item {
+  transition: transform 0.3s ease;
+}
+
+.food-category-item:hover {
+  transform: scale(1.05);
+}
+
+.restaurant-card {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.restaurant-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+}
+
+/* Mobile optimizations */
+@media (max-width: 768px) {
+  .hero-section {
+    padding: 2rem 1rem;
+  }
+  
+  .service-card {
+    margin-bottom: 1rem;
+  }
+}
+
+/* Custom carousel controls */
+.custom-carousel-control {
+  background-color: white;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Rating badge */
+.rating-badge {
+  background-color: #48c479;
+  color: white;
+  padding: 2px 5px;
+  border-radius: 4px;
+  font-size: 0.8rem;
+  font-weight: bold;
+}
