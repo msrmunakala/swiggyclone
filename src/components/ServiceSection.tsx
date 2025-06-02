@@ -11,7 +11,7 @@ interface ServiceCardProps {
   bgColor: string;
 }
 
-const ServiceCard: React.FC<ServiceCardProps> = ({ title, subtitle, offerText, imageSrc, bgColor }) => {
+const ServiceCard: React.FC<ServiceCardProps> = ({ title, subtitle, offerText, bgColor }) => {
   return (
     <Card className="border-0 h-100 shadow-sm">
       <CardBody className={`${bgColor} rounded p-4`}>
