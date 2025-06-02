@@ -9,44 +9,62 @@ import {
   NavLink,
   Collapse,
   NavbarToggler,
-
   Button,
-  Container
+  Container,
 } from 'reactstrap';
-import Image from 'next/image'; 
+import Image from 'next/image';
 
 const Header: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
   const toggle = () => setIsOpen(!isOpen);
 
   return (
-            <Navbar expand="md" className="swiggy-bg-orange py-3 m-0 w-100" container={false}>
-  <Container fluid className="d-flex justify-content-between align-items-center">
-    <NavbarBrand href="/" className="text-white fw-bold">
-      Swiggy
-    </NavbarBrand>
+    <Navbar expand="md" className="bg-orange py-3" container={false} style={{ backgroundColor: '#fc8019' }}>
+      <Container fluid className="d-flex justify-content-between align-items-center px-4">
+        {/* Logo and Brand */}
+        <NavbarBrand href="/" className="d-flex align-items-center text-white fw-bold fs-4 m-0">
+          <Image
+            src="/swiggy-logo-icon.png" // Add this image to your public folder
+            alt="Swiggy"
+            width={30}
+            height={30}
+            className="me-2"
+          />
+          Swiggy
+        </NavbarBrand>
 
-    <NavbarToggler onClick={toggle} />
+        {/* Toggler for mobile */}
+        <NavbarToggler onClick={toggle} className="border-0" />
 
-    <Collapse isOpen={isOpen} navbar>
-      <Nav className="ms-auto align-items-center" navbar>
-        <NavItem className="me-3">
-          <NavLink href="#" className="text-dark">Swiggy Corporate</NavLink>
-        </NavItem>
-        <NavItem className="me-3">
-          <NavLink href="#" className="text-dark">Partner with us</NavLink>
-        </NavItem>
-        <NavItem className="me-3">
-          <NavLink href="#" className="text-dark">Get the App</NavLink>
-        </NavItem>
-        <NavItem>
-          <Button color="dark" className="rounded-pill px-4">Sign in</Button>
-        </NavItem>
-      </Nav>
-    </Collapse>
-  </Container>
-</Navbar>
-
+        <Collapse isOpen={isOpen} navbar className="justify-content-end">
+          <Nav navbar className="align-items-center">
+            <NavItem className="me-4">
+              <NavLink href="#" className="text-white fw-semibold">
+                Swiggy Corporate
+              </NavLink>
+            </NavItem>
+            <NavItem className="me-4">
+              <NavLink href="#" className="text-white fw-semibold">
+                Partner with us
+              </NavLink>
+            </NavItem>
+            <NavItem className="me-4">
+              <Button
+                color="link"
+                className="text-white fw-semibold text-decoration-none d-flex align-items-center p-0"
+              >
+                Get the App <span className="ms-1">↗</span>
+              </Button>
+            </NavItem>
+            <NavItem>
+              <Button color="light" className="fw-semibold text-dark px-4 rounded-pill">
+                Sign in
+              </Button>
+            </NavItem>
+          </Nav>
+        </Collapse>
+      </Container>
+    </Navbar>
   );
 };
 
