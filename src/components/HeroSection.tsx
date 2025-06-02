@@ -5,33 +5,58 @@ import { Container, Button, Input, InputGroup } from 'reactstrap';
 
 const HeroSection: React.FC = () => {
   return (
-    <div className="swiggy-bg-orange py-5">
-      <div className="text-white justify-contetnt-center text-center fw-bold mb-4">
-      <p>Order food & groceries. Discover best restaurants. Swiggy it!</p></div>
-      <div className="d-flex justify-content-center gap-4 p-4">
-        
-  <div className="flex items-center border rounded-full px-4 py-2 bg-white w-80">
-    <span className="text-gray-400 mr-2">📍</span>
-    <input
-      type="text"
-      placeholder="Enter your delivery location"
-      className="outline-none w-full"
-    />
-    <span className="ml-2">⌄</span>
+    <div
+  className="position-relative swiggy-bg-orange overflow-hidden"
+  style={{ paddingTop: '4rem', paddingBottom: '4rem', minHeight: '500px' }}
+>
+  {/* Left Veggies Image */}
+  <img
+    src="https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto/portal/testing/seo-home/Veggies_new.png"
+    alt="Veggies"
+    className="position-absolute bottom-0 start-0"
+    style={{ width: '280px', height: 'auto', zIndex: 0 }}
+  />
+
+  {/* Right Sushi Image */}
+  <img
+    src="https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto/portal/testing/seo-home/Sushi_replace.png"
+    alt="Sushi"
+    className="position-absolute bottom-0 end-0"
+    style={{ width: '300px', height: 'auto', zIndex: 0 }}
+  />
+
+  {/* Headline Text */}
+  <div className="text-white text-center fw-bold mb-4 position-relative z-1">
+    <h4>Order food & groceries. Discover best restaurants. Swiggy it!</h4>
   </div>
-  <div className="flex items-center border rounded-full px-4 py-2 bg-white w-full max-w-md">
-    <input
-      type="text"
-      placeholder="Search for restaurant, item or more"
-      className="outline-none w-full"
-    />
-    <button>
-      🔍
-    </button>
+
+  {/* Search Fields */}
+  <div className="d-flex justify-content-center gap-4 px-4 flex-wrap position-relative z-1">
+    {/* Location Field */}
+    <div className="d-flex align-items-center bg-white rounded-pill px-4 py-2 shadow" style={{ minWidth: '300px' }}>
+      <span className="text-muted me-2">📍</span>
+      <input
+        type="text"
+        placeholder="Enter your delivery location"
+        className="form-control border-0 shadow-none"
+        style={{ flex: 1 }}
+      />
+      <span className="ms-2">⌄</span>
+    </div>
+
+    {/* Search Field */}
+    <div className="d-flex align-items-center bg-white rounded-pill px-4 py-2 shadow" style={{ minWidth: '400px' }}>
+      <input
+        type="text"
+        placeholder="Search for restaurant, item or more"
+        className="form-control border-0 shadow-none"
+        style={{ flex: 1 }}
+      />
+      <button className="btn btn-link p-0 ms-2">🔍</button>
+    </div>
   </div>
 </div>
 
-    </div>
   );
 };
 
