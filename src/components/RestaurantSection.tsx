@@ -8,14 +8,14 @@ interface RestaurantCardProps {
   rating: string;
   cuisine: string;
   price: string;
-  location: string;
+ 
   distance: string;
   offers: string[];
-  imageSrc: string;
+  
 }
 
 const RestaurantCard: React.FC<RestaurantCardProps> = ({ 
-  name, rating, cuisine, price, location, distance, offers, imageSrc 
+  name, rating, cuisine, price, distance, offers, 
 }) => {
   return (
     <Card className="restaurant-card border-0 shadow-sm h-100 mb-4">
