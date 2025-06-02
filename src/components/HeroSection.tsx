@@ -1,7 +1,7 @@
 "use client";
 
 import React from 'react';
-import { Container, Button, Input, InputGroup } from 'reactstrap';
+import { Button, Input } from 'reactstrap';
 
 const HeroSection: React.FC = () => {
   return (
@@ -35,7 +35,7 @@ const HeroSection: React.FC = () => {
     {/* Location Field */}
     <div className="d-flex align-items-center bg-white rounded-pill px-4 py-2 shadow" style={{ minWidth: '300px' }}>
       <span className="text-muted me-2">📍</span>
-      <input
+      <Input
         type="text"
         placeholder="Enter your delivery location"
         className="form-control border-0 shadow-none"
@@ -46,13 +46,13 @@ const HeroSection: React.FC = () => {
 
     {/* Search Field */}
     <div className="d-flex align-items-center bg-white rounded-pill px-4 py-2 shadow" style={{ minWidth: '400px' }}>
-      <input
+      <Input
         type="text"
         placeholder="Search for restaurant, item or more"
         className="form-control border-0 shadow-none"
         style={{ flex: 1 }}
       />
-      <button className="btn btn-link p-0 ms-2">🔍</button>
+      <Button className="btn btn-link p-0 ms-2">🔍</Button>
     </div>
   </div>
 </div>

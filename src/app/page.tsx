@@ -1,5 +1,5 @@
 import React from 'react';
-import { Container } from 'reactstrap';
+
 import Header from '@/components/Header';
 import HeroSection from '@/components/HeroSection';
 import ServiceSection from '@/components/ServiceSection';
@@ -11,7 +11,6 @@ import Footer from '@/components/Footer';
 export default function Home() {
   return (
     <main>
-      <Header />
       <HeroSection />
       <ServiceSection />
       <FoodCategorySection />
