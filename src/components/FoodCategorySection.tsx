@@ -24,8 +24,8 @@ const FoodCategory: React.FC<FoodCategoryProps> = ({ name, imageSrc }) => {
 
 const FoodCategorySection: React.FC = () => {
   const categories = [
-    { name: 'Vada', imageSrc: '/vada.png' },
-    { name: 'Paratha', imageSrc: '/paratha.png' },
+    { name: 'Vada', imageSrc: 'https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto/PC_Mweb/Dosa.png' },
+    { name: 'idli', imageSrc: 'https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto/PC_Mweb/Poha-1.png' },
     { name: 'Cake', imageSrc: '/cake.png' },
     { name: 'Poori', imageSrc: '/poori.png' },
     { name: 'Chole Bhature', imageSrc: '/chole-bhature.png' },

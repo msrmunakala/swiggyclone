@@ -60,17 +60,18 @@ const ServiceSection: React.FC = () => {
   ];
 
   return (
-    <section className="py-5">
-      <Container>
-        <Row>
-          {services.map((service, index) => (
-            <Col md={4} className="mb-4 mb-md-0" key={index}>
-              <ServiceCard {...service} />
-            </Col>
-          ))}
-        </Row>
-      </Container>
-    </section>
+   <section className="w-100 swiggy-bg-orange py-5">
+  <Container fluid className="p-0 m-0">
+    <Row className="m-0 p-8">
+      {services.map((service, index) => (
+        <Col md={4} className="p-4" key={index}>
+          <ServiceCard {...service} />
+        </Col>
+      ))}
+    </Row>
+  </Container>
+</section>
+
   );
 };
 
