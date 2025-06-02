@@ -13,7 +13,7 @@ import {
   Button,
   Container
 } from 'reactstrap';
-
+import Image from 'next/image'; 
 
 const Header: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
