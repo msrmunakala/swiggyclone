@@ -22,9 +22,14 @@ const AppDownloadSection: React.FC = () => {
               <Button color="light" className="mb-3 mb-sm-0 me-sm-3 px-4 py-2">
                 <i className="bi bi-apple me-2"></i>App Store
               </Button>
-              <Button color="light" className="px-4 py-2">
+              <a
+                href="https://play.google.com/store/apps/details?id=in.swiggy.android&pcampaignid=web_share"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="btn btn-light px-4 py-2"
+              >
                 <i className="bi bi-google-play me-2"></i>Google Play
-              </Button>
+              </a>
             </div>
           </Col>
         </Row>
