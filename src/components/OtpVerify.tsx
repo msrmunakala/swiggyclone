@@ -1,13 +1,19 @@
 // components/OtpVerify.tsx
 import React, { useState } from 'react';
 
+// List of valid OTPs
+const validOtps = ['2233', '5544', '2356', '6969', '8563', '6342', '2589', '4569', '1234', '7893'];
+
 const OtpVerify: React.FC<{ mobile: string; onBack: () => void }> = ({ mobile, onBack }) => {
   const [otp, setOtp] = useState('');
 
   const handleVerify = (e: React.FormEvent) => {
     e.preventDefault();
-    if (otp === '1234') alert('Logged in!');
-    else alert('Invalid OTP');
+    if (validOtps.includes(otp)) {
+      alert('✅ Login Successful!');
+    } else {
+      alert('❌ Invalid OTP');
+    }
   };
 
   return (
