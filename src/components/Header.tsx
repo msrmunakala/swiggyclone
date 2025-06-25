@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useState } from 'react';
+import axios from 'axios';
 import {
   Navbar,
   NavbarBrand,
@@ -15,23 +16,61 @@ import {
   ModalBody,
 } from 'reactstrap';
 import Image from 'next/image';
-import SignIn from './SignIn';
-import OtpVerify from './OtpVerify';
+import { useRouter } from 'next/navigation';
 
 const Header: React.FC = () => {
+  const router = useRouter();
+
   const [isOpen, setIsOpen] = useState(false);
   const toggle = () => setIsOpen(!isOpen);
 
   const [showModal, setShowModal] = useState(false);
-  const [step, setStep] = useState<'signin' | 'otp'>('signin');
-  const [mobile, setMobile] = useState('');
+  const [username, setUsername] = useState('');
+  const [password, setPassword] = useState('');
+  const [loading, setLoading] = useState(false);
 
-  const handleSignIn = (number: string) => {
-    setMobile(number);
-    setStep('otp');
+  const handleLogin = async (e: React.FormEvent) => {
+    e.preventDefault();
+
+    if (!username || !password) {
+      alert('❌ Please enter both username and password');
+      return;
+    }
+
+    try {
+      setLoading(true);
+
+      const response = await axios.post('http://127.0.0.1:8004/user-login' ,{
+        username,
+        password,
+      });
+
+      if (response.status === 200 && response.data.token) {
+        const { token, username: returnedUsername } = response.data;
+
+        
+        localStorage.setItem('authToken', token);
+        localStorage.setItem('username', returnedUsername);
+
+        alert(`✅ Welcome, ${returnedUsername}!`);
+
+      
+        router.push('/dashboard'); 
+
+        
+        setShowModal(false);
+        setUsername('');
+        setPassword('');
+      } else {
+        alert('❌ Login failed. Invalid response.');
+      }
+    } catch (error: any) {
+      console.error(error);
+      alert('❌ Login failed. Check your credentials or server.');
+    } finally {
+      setLoading(false);
+    }
   };
-
-  const handleBack = () => setStep('signin');
 
   return (
     <>
@@ -73,12 +112,9 @@ const Header: React.FC = () => {
                 <Button
                   color="light"
                   className="fw-semibold text-dark px-4 rounded-pill"
-                  onClick={() => {
-                    setStep('signin');
-                    setShowModal(true);
-                  }}
+                  onClick={() => setShowModal(true)}
                 >
-                  Sign in
+                  Login
                 </Button>
               </NavItem>
             </Nav>
@@ -88,11 +124,34 @@ const Header: React.FC = () => {
 
       <Modal isOpen={showModal} toggle={() => setShowModal(false)} centered>
         <ModalBody>
-          {step === 'signin' ? (
-            <SignIn onNext={handleSignIn} />
-          ) : (
-            <OtpVerify mobile={mobile} onBack={handleBack} />
-          )}
+          <div className="p-3">
+            <h5 className="fw-bold mb-3">Login</h5>
+            <form onSubmit={handleLogin}>
+              <input
+                type="text"
+                placeholder="Username"
+                value={username}
+                onChange={(e) => setUsername(e.target.value)}
+                className="form-control mb-3"
+                required
+              />
+              <input
+                type="password"
+                placeholder="Password"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+                className="form-control mb-3"
+                required
+              />
+              <button
+                type="submit"
+                className="btn btn-dark w-100 rounded-pill"
+                disabled={loading}
+              >
+                {loading ? 'Logging in...' : 'Login'}
+              </button>
+            </form>
+          </div>
         </ModalBody>
       </Modal>
     </>
