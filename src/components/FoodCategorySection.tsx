@@ -2,23 +2,26 @@
 
 import React from 'react';
 import { Button } from 'reactstrap';
+import Image from 'next/image'; 
 
 const FoodCategoryItem: React.FC<{ name: string; imageSrc: string }> = ({ name, imageSrc }) => (
   <div className="food-category-item text-center p-2">
     <div
-      className="bg-light rounded-circle mx-auto mb-2"
+      className="bg-light rounded-circle mx-auto mb-2 position-relative"
       style={{ width: '80px', height: '80px', overflow: 'hidden' }}
     >
-      <img
+      <Image
         src={imageSrc}
         alt={name}
-        className="w-100 h-100 object-fit-cover"
+        fill
+        className="object-fit-cover rounded-circle"
         style={{ objectFit: 'cover' }}
       />
     </div>
     <p className="mb-0 mt-2 small">{name}</p>
   </div>
 );
+
 
 const FoodCategorySection: React.FC = () => {
   const categories = [

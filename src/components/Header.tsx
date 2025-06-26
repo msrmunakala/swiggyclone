@@ -1,6 +1,7 @@
 "use client";
+
 import React, { useState } from 'react';
-import axios, { AxiosError } from 'axios';
+import axios from 'axios';
 import {
   Navbar,
   NavbarBrand,
@@ -61,10 +62,8 @@ const Header: React.FC = () => {
       }
     } catch (error) {
       if (axios.isAxiosError(error)) {
-        const message =
-          (error.response?.data as any)?.detail ||
-          (error.response?.data as any)?.message ||
-          '❌ Login failed. Check your credentials or server.';
+        const data = error.response?.data as { detail?: string; message?: string } | undefined;
+        const message = data?.detail || data?.message || '❌ Login failed. Check your credentials or server.';
         alert(message);
       } else {
         console.error('Unknown error:', error);
