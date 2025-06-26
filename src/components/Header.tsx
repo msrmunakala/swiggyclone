@@ -1,7 +1,6 @@
 "use client";
-
 import React, { useState } from 'react';
-import axios from 'axios';
+import axios, { AxiosError } from 'axios';
 import {
   Navbar,
   NavbarBrand,
@@ -40,7 +39,7 @@ const Header: React.FC = () => {
     try {
       setLoading(true);
 
-      const response = await axios.post('http://127.0.0.1:8004/user-login' ,{
+      const response = await axios.post('http://127.0.0.1:8004/user-login', {
         username,
         password,
       });
@@ -48,25 +47,29 @@ const Header: React.FC = () => {
       if (response.status === 200 && response.data.token) {
         const { token, username: returnedUsername } = response.data;
 
-        
         localStorage.setItem('authToken', token);
         localStorage.setItem('username', returnedUsername);
 
         alert(`✅ Welcome, ${returnedUsername}!`);
+        router.push('/dashboard');
 
-      
-        router.push('/dashboard'); 
-
-        
         setShowModal(false);
         setUsername('');
         setPassword('');
       } else {
         alert('❌ Login failed. Invalid response.');
       }
-    } catch (error: any) {
-      console.error(error);
-      alert('❌ Login failed. Check your credentials or server.');
+    } catch (error) {
+      if (axios.isAxiosError(error)) {
+        const message =
+          (error.response?.data as any)?.detail ||
+          (error.response?.data as any)?.message ||
+          '❌ Login failed. Check your credentials or server.';
+        alert(message);
+      } else {
+        console.error('Unknown error:', error);
+        alert('❌ An unexpected error occurred.');
+      }
     } finally {
       setLoading(false);
     }
