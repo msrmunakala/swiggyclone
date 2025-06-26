@@ -43,7 +43,7 @@ const Header: React.FC = () => {
       const response = await axios.post('http://127.0.0.1:8004/user-login', {
         username,
         password,
-      });
+      })
 
       if (response.status === 200 && response.data.token) {
         const { token, username: returnedUsername } = response.data;
